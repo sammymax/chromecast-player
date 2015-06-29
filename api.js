@@ -55,7 +55,7 @@ var Api = function(client, session) {
   this.tlHelper.on('position', onPosition);
 };
 
-Api.APP_ID = 'CC1AD845';
+Api.APP_ID = '72D73594';
 
 inherits(Api, Application);
 
@@ -103,7 +103,8 @@ Api.prototype.load = function(opts, cb) {
       if(response.type === 'LOAD_FAILED') {
         return cb(new Error('Load failed'));
       }
-      cb(null, response.status[0]);
+	  if (response.status) cb(null, response.status[0]);
+	  else cb(null, null);
     }
   );
 };
